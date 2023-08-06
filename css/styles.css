@@ -1,0 +1,74 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+h1 {
+  color: rgb(62, 60, 60);
+  text-align: right;
+  margin: 10px;
+  font-weight: 300;
+}
+.weather-app {
+  margin: 0 auto;
+  margin-top: 100px;
+  max-width: 600px;
+}
+.enterLocation {
+  margin-left: 0px;
+  text-align: left;
+  margin-top: 15px;
+  color: rgb(62, 60, 60);
+}
+
+.currentDayTime {
+  margin: 40px 10px 0 0;
+  text-align: right;
+  color: rgb(62, 60, 60);
+}
+
+.current {
+  margin: 0 10px 5px 0;
+  text-align: right;
+  color: rgb(62, 60, 60);
+}
+
+.enteredCityState {
+  margin-left: 50px;
+  text-align: left;
+  margin-top: 40px;
+  font-size: 20px;
+}
+.currentTemp {
+  margin-left: 50px;
+  text-align: left;
+  font-size: 38px;
+}
+
+.units {
+  font-size: 18px;
+}
+
+.extraDetails {
+  text-align: left;
+  border-right: solid gray 1px;
+}
+
+.currentWind {
+  color: rgb(62, 60, 60);
+  margin-top: 40px;
+}
+.currentHumidity {
+  color: rgb(62, 60, 60);
+}
+.weekDay {
+  color: rgb(62, 60, 60);
+  margin-bottom: 10px;
+}
+.sunIcon {
+  font-size: 40px;
+  margin: 5px;
+  color: #fffad7;
+}
+
+.currentLocationTemp {
+  border-right: solid gray 1px;
+}
