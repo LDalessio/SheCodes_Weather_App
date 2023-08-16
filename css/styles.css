@@ -7,6 +7,12 @@ h1 {
   margin: 10px;
   font-weight: 300;
 }
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
 .weather-app {
   margin: 0 auto;
   margin-top: 100px;
@@ -71,4 +77,13 @@ h1 {
 
 .currentLocationTemp {
   border-right: solid gray 1px;
+}
+
+.currentLocationTemp .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+}
+
+.currentLocationTemp .active:hover {
+  text-decoration: none;
 }
