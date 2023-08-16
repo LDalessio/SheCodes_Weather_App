@@ -1,4 +1,5 @@
-// Function to display the current date and time
+// Date and Time Functions
+//----------------------------------------------
 function formatDate(date) {
   let hours = date.getHours();
   if (hours < 10) {
@@ -7,7 +8,7 @@ function formatDate(date) {
 
   let minutes = date.getMinutes();
   if (minutes < 10) {
-    minutes = `10${minutes}`;
+    minutes = `0${minutes}`;
   }
 
   let dayIndex = date.getDay();
@@ -25,11 +26,14 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+// Display Current Date and Time
+//----------------------------------------------
 let dateElement = document.querySelector("#date");
 let now = new Date();
-
 dateElement.innerHTML = formatDate(now);
-// Function to update the weather information based on the API response
+
+// Weather Functions
+//----------------------------------------------
 function showCurrentCityTemperature(response) {
   let temperatureElement = document.querySelector("#temperature-value");
   fahrenheitLinkTemperature = response.data.main.temp;
@@ -42,17 +46,16 @@ function showCurrentCityTemperature(response) {
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
 }
-// Function to fetch weather data based on the user-entered city name
 
 function getWeatherByCity(city) {
   let apiKey = "cb286bad3607984b41ed10c8de5cf00e";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-
   axios.get(apiUrl).then(showCurrentCityTemperature);
 }
 
-//Showing the city searched in the enter a city section
+// Handle City Search
+//----------------------------------------------
 function cityEntered(event) {
   event.preventDefault();
   let city = document.querySelector("#city");
@@ -63,6 +66,8 @@ function cityEntered(event) {
 let enterACity = document.querySelector("#enter-location");
 enterACity.addEventListener("submit", cityEntered);
 
+// Geolocation Functions
+//----------------------------------------------
 function showPosition(position) {
   let apiKey = "cb286bad3607984b41ed10c8de5cf00e";
   let units = "imperial";
@@ -76,13 +81,18 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+
 let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", getCurrentLocation);
+
+// Temperature Unit Conversion
+//----------------------------------------------
 function handleFormSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
   getWeatherByCity(city);
 }
+
 function handleFahrenheitLink(event) {
   event.preventDefault();
   celsiusLink.classList.remove("active");
@@ -99,6 +109,9 @@ function handleCelsiusLinkClick(event) {
   let celsiusTemperature = ((fahrenheitLinkTemperature - 32) * 5) / 9;
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
+
+// Event Listeners
+//----------------------------------------------
 let fahrenheitLinkTemperature = null;
 
 let searchForm = document.querySelector("#enter-location");
@@ -110,4 +123,6 @@ fahrenheitLink.addEventListener("click", handleFahrenheitLink);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", handleCelsiusLinkClick);
 
+// Initialize with Default City
+//----------------------------------------------
 getWeatherByCity("Phoenix");
