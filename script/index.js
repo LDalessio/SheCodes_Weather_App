@@ -36,21 +36,22 @@ dateElement.innerHTML = formatDate(now);
 //----------------------------------------------
 function showCurrentCityTemperature(response) {
   let temperatureElement = document.querySelector("#temperature-value");
-  fahrenheitLinkTemperature = response.data.main.temp;
+  fahrenheitLinkTemperature = response.data.temperature.current;
   temperatureElement.innerHTML = Math.round(fahrenheitLinkTemperature);
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#humidity").innerHTML =
+    response.data.temperature.humidity;
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].description;
+    response.data.condition.description;
 }
 
 function getWeatherByCity(city) {
-  let apiKey = "cb286bad3607984b41ed10c8de5cf00e";
+  let apiKey = "73453af9f4a0a21aof85fet5591b1ffd";
   let units = "imperial";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&units=${units}&key=${apiKey}`;
   axios.get(apiUrl).then(showCurrentCityTemperature);
 }
 
@@ -69,11 +70,11 @@ enterACity.addEventListener("submit", cityEntered);
 // Geolocation Functions
 //----------------------------------------------
 function showPosition(position) {
-  let apiKey = "cb286bad3607984b41ed10c8de5cf00e";
+  let apiKey = "73453af9f4a0a21aof85fet5591b1ffd";
   let units = "imperial";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&units=${units}&key=${apiKey}`;
   axios.get(apiUrl).then(showCurrentCityTemperature);
 }
 
