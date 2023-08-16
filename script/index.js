@@ -46,6 +46,11 @@ function showCurrentCityTemperature(response) {
     response.data.temperature.humidity;
   document.querySelector("#description").innerHTML =
     response.data.condition.description;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
 }
 
 function getWeatherByCity(city) {
